@@ -6,6 +6,14 @@ build_chart_1 <- function(data) {
   git_familiarity_data <- data %>% group_by(GitFamiliarity) %>%
       summarise(number_of_students = n())
   
+  x <- list(
+    title = "Git Familiarity"
+  )
+  
+  # Setting y axis title 
+  y <- list(
+    title = "Number of Students"
+  )
   
   # Creating a bar chart
   p <- plot_ly(git_familiarity_data,
@@ -13,7 +21,7 @@ build_chart_1 <- function(data) {
               y = number_of_students,
               type = "bar")
     
-  layout(p, title = 'Familiarity with Git')
+  layout(p, xaxis = x, yaxis = y, title = 'Familiarity with Git')
   
   return(p)
 }
