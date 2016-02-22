@@ -2,7 +2,7 @@ require('dplyr')
 
 data <- read.csv('../data/intro_survey_data.csv', stringsAsFactors = FALSE)
 
-names(data) <- c('ClassStanding', 'InfoProspective', 'OS', 'TerminalExperience', 'GitFamiliarity', 'MarkDownFamiliarity', 'RFamiliarity', 'ProgrammingExperience', 'CountriesVisited', 'CatOrDog', 'SeahawksFan')
+
 
 numOfResponse <- nrow(data)
 numOfFreshman <- nrow(filter(data, ClassStanding == "Freshman"))
@@ -13,13 +13,14 @@ OSApplyToInfo <- data %>%
                   group_by(OS) %>%
                   filter(InfoProspective == 'Yes') %>%
                   summarise(InfoProspectives = n())
-GredeApplyToInfo <- data %>%
+GradeApplyToInfo <- data %>%
                   group_by(ClassStanding) %>%
                   filter(InfoProspective == 'Yes') %>%
                   summarise(InfoProspectives = n())
 
 # A function that takes in a dataset and returns a list of info about it:
 info_function <- function(dataset) {
+  names(data) <- c('ClassStanding', 'InfoProspective', 'OS', 'TerminalExperience', 'GitFamiliarity', 'MarkDownFamiliarity', 'RFamiliarity', 'ProgrammingExperience', 'CountriesVisited', 'CatOrDog', 'SeahawksFan')
   ret <- list()
   ret$numOfResponse <- nrow(dataset)
   ret$numOfFreshman <- nrow(filter(dataset, ClassStanding == "Freshman"))
