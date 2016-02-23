@@ -1,0 +1,40 @@
+---
+title: "index"
+output: html_document
+---
+#Summary Information file
+```{r,echo=FALSE,message=FALSE}
+library(dplyr)
+library(plotly)
+library(knitr)
+
+setwd(dir = '/Users/baronbaura/Desktop/uw/Informatics/info498f/a7-collaborative-coding')
+data <- read.csv('data/intro_survey_data.csv', stringsAsFactors = FALSE)
+
+source('scripts/summary_info.r')
+info <- info_function(data)
+```
+This is a summary of the survey of the INFO 498 FC class that was filled out in the beginning of the quarter. There were a total of `r info$numOfResponse` and among them, there were: `r info$numOfFreshman` freshmen, `r info$numOfSophomore` sophomores, `r info$numOfJunior` juniors, and `r info$numOfSenior` seniors. Of the class, `r info$numofWindows` students use Windows as their primary OS, while `r info$numOfMac` students use Mac
+
+Below is a table that shows how many students are looking to apply to the Informatics major for each class
+`r kable(info$GradeApplyToInfo, format = 'markdown')`
+According to the table, 13 freshmen, 36 sophomores, 15 juniors, and 3 seniors are looking to apply to the Informatic major
+
+##More Interesting Data
+Below is a table that shows how many students use a particular OS and are planning to apply to the major
+`r kable(info$OSApplyToInfo, format = 'markdown')`
+According to the table, 1 student uses Linux, 29 students use Mac, 1 student uses a combination of Windows at home and Linux (Ubuntu) at work, and 36 students use Windows
+
+#Chart 1
+Below is a chart that shows the number of students that are familiar with GitHub
+```{r,echo=FALSE,message=FALSE}
+source('scripts/chart_1.r')
+build_chart_1(data)
+```
+
+#Chart 2
+Below is a graph that shows INFO 498's programming experience for the students in the class
+```{r,echo=FALSE,message=FALSE}
+source('scripts/chart2.r')
+make_chart_2(data)
+```
