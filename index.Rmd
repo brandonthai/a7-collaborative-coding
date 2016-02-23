@@ -2,7 +2,7 @@
 title: "index"
 output: html_document
 ---
-#Summary Information file
+#Summary of Information file
 ```{r,echo=FALSE,message=FALSE}
 library(dplyr)
 library(plotly)
