@@ -8,7 +8,6 @@ library(dplyr)
 library(plotly)
 library(knitr)
 
-setwd(dir = '/Users/baronbaura/Desktop/uw/Informatics/info498f/a7-collaborative-coding')
 data <- read.csv('data/intro_survey_data.csv', stringsAsFactors = FALSE)
 
 source('scripts/summary_info.r')
